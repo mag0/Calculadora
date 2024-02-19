@@ -18,13 +18,8 @@ let reinicioDePantalla = false;
 boton.forEach((e) => {
   r.textContent = "";
   e.addEventListener("click", () => {
-    if (
-      r.textContent == "ERROR" ||
-      r.textContent == "UNA CUENTA A LA VEZ" ||
-      reinicioDePantalla
-    ) {
+    if (r.textContent == "ERROR" || r.textContent == "UNA CUENTA A LA VEZ") {
       r.textContent = "";
-      reinicioDePantalla = false;
     }
     if (
       e.textContent != "c" &&
@@ -39,6 +34,7 @@ boton.forEach((e) => {
 
 igual.addEventListener("click", () => {
   r.textContent = "";
+  console.log(mostrarResultado());
   r.textContent = mostrarResultado();
 });
 
@@ -63,7 +59,6 @@ function mostrarResultado() {
   let resultado = 0;
   let cambioDeNumero = false;
   let finDeImpresion = false;
-  let haySigno = false;
   numero1 = "";
   numero2 = "";
   while (!finDeImpresion) {
@@ -71,7 +66,6 @@ function mostrarResultado() {
       if (numero.charAt(0) == "-") {
         numero1 += numero.charAt(0);
         cantidad++;
-        console.log("numero uno: " + numero1);
       }
       while (numero.length > cantidad && !esSigno(cantidad)) {
         numero1 += numero.charAt(cantidad);
@@ -106,7 +100,11 @@ function mostrarResultado() {
     resultado = resultadoFinal(numero1, numero2);
   }
   reinicioDePantalla = true;
-  if (resultado - resultado.toFixed(0) != 0) {
+  if (
+    resultado != "UNA CUENTA A LA VEZ" &&
+    resultado != "ERROR" &&
+    resultado - resultado.toFixed(0) != 0
+  ) {
     resultado = resultado.toFixed(2);
   }
   return resultado;
