@@ -1,0 +1,110 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+    background-image: url(../img/nature.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculadora{
+    background-color: rgba(120, 120, 120, 0.714);
+    border: .5em solid rgb(255, 255, 255);
+    padding: 1em;
+    font-size: 1.3em;
+    gap: .8em;
+    display: grid;
+    grid-template-columns: repeat(4,3em);
+    grid-template-rows: repeat(6,3em);
+    grid-template-areas:
+    'pantalla pantalla pantalla pantalla'
+    'borrarTodo borrar . dividir'
+    'siete ocho nueve por'
+    'cuatro cinco seis menos'
+    'uno dos tres mas'
+    'punto cero igual igual'
+    ;
+    
+}
+
+.boton{
+    border: .2em solid rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .4em;
+    font-size: 1.1em;
+    cursor:grab;
+}
+
+.boton:hover{
+    background-color: rgba(255, 255, 255, 0.302);
+}
+.pantalla{
+    grid-area: pantalla;
+    justify-content: end;
+    padding: .3em;
+}
+.pantalla:hover{
+    background-color: rgba(245, 245, 220, 0);
+}
+.nueve{
+    grid-area: nueve;
+}.ocho{
+    grid-area: ocho;
+}.siete{
+    grid-area: siete;
+}.seis{
+    grid-area: seis;
+}.cinco{
+    grid-area: cinco;
+}.cuatro{
+    grid-area: cuatro;
+}.tres{
+    grid-area: tres;
+}.dos{
+    grid-area: dos;
+}.uno{
+    grid-area: uno;
+}.cero{
+    grid-area: cero;
+}.mas{
+    grid-area: mas;
+}.menos{
+    grid-area: menos;
+}.por{
+    grid-area: por;
+}.dividir{
+    grid-area: dividir;
+}.punto{
+    grid-area: punto;
+}.igual{
+    grid-area: igual;
+}.borrar{
+    grid-area: borrar;
+}.borrarTodo{
+    grid-area: borrarTodo;
+}
+
+
+@media screen and (width<= 768px) {
+    .calculadora{
+        font-size: 1.1em;
+    }
+}
+
+
+@media screen and (width<= 425px) {
+    .calculadora{
+        font-size: 1em;
+    }
+}
