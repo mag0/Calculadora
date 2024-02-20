@@ -14,28 +14,34 @@ let por = false;
 let division = false;
 let puntoActivo = false;
 let reinicioDePantalla = false;
+let capacidadMaxima = false;
 
 boton.forEach((e) => {
   r.textContent = "";
   e.addEventListener("click", () => {
-    if (r.textContent == "ERROR" || r.textContent == "UNA CUENTA A LA VEZ") {
-      r.textContent = "";
+    if (r.textContent.length == 8) {
+      capacidadMaxima = true;
     }
-    if (
-      e.textContent != "c" &&
-      e.textContent != "ce" &&
-      e.textContent != "+/-"
-    ) {
-      r.textContent += e.textContent;
-      numero = r.textContent;
+    if (!capacidadMaxima) {
+      if (r.textContent == "ERROR" || r.textContent == "UNA CUENTA A LA VEZ") {
+        r.textContent = "";
+      }
+      if (
+        e.textContent != "c" &&
+        e.textContent != "ce" &&
+        e.textContent != "+/-"
+      ) {
+        r.textContent += e.textContent;
+        numero = r.textContent;
+      }
     }
   });
 });
 
 igual.addEventListener("click", () => {
   r.textContent = "";
-  console.log(mostrarResultado());
   r.textContent = mostrarResultado();
+  capacidadMaxima = false;
 });
 
 borrar.addEventListener("click", () => {
@@ -47,6 +53,7 @@ borrar.addEventListener("click", () => {
   }
   numero = numeroNuevo;
   r.textContent = numeroNuevo;
+  capacidadMaxima = false;
 });
 
 borrarTodo.addEventListener("click", () => {
@@ -136,6 +143,8 @@ function resultadoFinal(numero1, numero2) {
   } else if (division && numero2 != "0") {
     resultado = parseFloat(numero1) / parseFloat(numero2);
     division = false;
+  } else if (capacidadMaxima) {
+    resultado = "OCHO DIGITOS MAXIMO";
   } else {
     resultado = "ERROR";
   }
